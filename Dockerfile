@@ -1,7 +1,7 @@
 FROM		    ubuntu:14.10
 MAINTAINER	Markus Krallinger "mkrallinger@gmail.com"
 
-ADD         owncloud-8.0.5.tar.bz2 /var/www/
+ADD         owncloud-8.1.3.tar.bz2 /var/www/
 ADD         nginx_ssl.conf /root/
 ADD         nginx.conf /root/
 ADD         config.php /var/www/owncloud/config/config.php
