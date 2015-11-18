@@ -1,10 +1,10 @@
-FROM		    ubuntu:14.10
-MAINTAINER	Markus Krallinger "mkrallinger@gmail.com"
+FROM        ubuntu:14.10
+MAINTAINER  Markus Krallinger "mkrallinger@gmail.com"
 
 RUN         apt-get update && \
-            apt-get install -y git php5-cli php5-gd php5-pgsql php5-sqlite php5-mysqlnd php5-curl php5-intl php5-mcrypt php5-ldap php5-gmp php5-apcu php5-imagick php5-fpm smbclient nginx 
+            apt-get install -y git php5-cli php5-gd php5-pgsql php5-sqlite php5-mysqlnd php5-curl php5-intl php5-mcrypt php5-ldap php5-gmp php5-apcu php5-imagick php5-fpm smbclient nginx
 
-ADD         owncloud-8.1.3.tar.bz2 /var/www/
+ADD         owncloud-8.2.1.tar.bz2 /var/www/
 ADD         config.php /var/www/owncloud/config/config.php
 ADD         bootstrap.sh /usr/bin/
 
