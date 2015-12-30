@@ -1,8 +1,13 @@
-FROM        ubuntu:14.10
+FROM        ubuntu:15.10
 MAINTAINER  Markus Krallinger "mkrallinger@gmail.com"
 
+
+
+RUN         apt-get install -y software-properties-common && \
+            LANG=C.UTF-8 add-apt-repository -y ppa:ondrej/php-7.0
+
 RUN         apt-get update && \
-            apt-get install -y git php5-cli php5-gd php5-pgsql php5-sqlite php5-mysqlnd php5-curl php5-intl php5-mcrypt php5-ldap php5-gmp php5-apcu php5-imagick php5-fpm smbclient nginx
+            apt-get install -y git php7.0-cli php7.0-gd php7.0-pgsql php7.0-curl php7.0-intl php7.0-fpm nginx
 
 ADD         owncloud-8.2.1.tar.bz2 /var/www/
 ADD         config.php /var/www/owncloud/config/config.php
@@ -15,11 +20,11 @@ RUN         groupmod -g 1001 www-data && \
 
 ADD         nginx_ssl.conf /root/
 ADD         nginx.conf /root/
-ADD         php.ini /etc/php5/fpm/
-ADD         www.conf /etc/php5/fpm/pool.d/
+ADD         php.ini /etc/php/7.0/fpm/
+ADD         www.conf /etc/php/7.0/fpm/pool.d/
 
 
 EXPOSE      80
 EXPOSE      443
 
-ENTRYPOINT  ["bootstrap.sh"]
+#ENTRYPOINT  ["bootstrap.sh"]
