@@ -11,5 +11,5 @@ else
 fi
 #chown -R www-data:www-data /var/www/owncloud/data
 echo "Starting server..\n"
-/etc/init.d/php5-fpm start
+/etc/init.d/php7.0-fpm start
 /etc/init.d/nginx start
