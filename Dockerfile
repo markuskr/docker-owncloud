@@ -13,7 +13,7 @@ RUN          echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu `. /etc/lsb-re
 RUN         apt-get update && \
             DEBIAN_FRONTEND=noninteractive apt-get install -y php7.0-cli php7.0-gd php7.0-pgsql php7.0-curl php7.0-intl php7.0-fpm nginx php7.0-zip php7.0-xml php7.0-json
 
-ADD         owncloud-9.0.1.tar.bz2 /var/www/
+ADD         owncloud-9.0.2.tar.bz2 /var/www/
 ADD         config.php /var/www/owncloud/config/config.php
 ADD         bootstrap.sh /usr/bin/
 
@@ -22,7 +22,6 @@ RUN         groupmod -g 1001 www-data && \
             chown -R www-data:www-data /var/www/owncloud && \
             chmod +x /usr/bin/bootstrap.sh
 
-ADD         nginx_ssl.conf /root/
 ADD         nginx.conf /root/
 ADD         php.ini /etc/php/7.0/fpm/
 ADD         www.conf /etc/php/7.0/fpm/pool.d/
