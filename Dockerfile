@@ -1,4 +1,4 @@
-FROM        ubuntu:15.10
+FROM        ubuntu:16.04
 MAINTAINER  Markus Krallinger "mkrallinger@gmail.com"
 
 
@@ -11,15 +11,15 @@ RUN          echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu `. /etc/lsb-re
              && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 14AA40EC0831756756D7F66C4F4EA0AAE5267A6C
 
 RUN         apt-get update && \
-            DEBIAN_FRONTEND=noninteractive apt-get install -y php7.0-cli php7.0-gd php7.0-pgsql php7.0-curl php7.0-intl php7.0-fpm nginx php7.0-zip php7.0-xml php7.0-json
+            DEBIAN_FRONTEND=noninteractive apt-get install -y php7.0-cli php7.0-mb php7.0-gd php7.0-pgsql php7.0-curl php7.0-intl php7.0-fpm nginx php7.0-zip php7.0-xml php7.0-json
 
-ADD         owncloud-9.0.2.tar.bz2 /var/www/
-ADD         config.php /var/www/owncloud/config/config.php
+ADD         nextcloud-10.0.0.tar.bz2 /var/www/
+ADD         config.php /var/www/nextcloud/config/config.php
 ADD         bootstrap.sh /usr/bin/
 
 RUN         groupmod -g 1001 www-data && \
             usermod -u 1003 www-data && \
-            chown -R www-data:www-data /var/www/owncloud && \
+            chown -R www-data:www-data /var/www/nextcloud && \
             chmod +x /usr/bin/bootstrap.sh
 
 ADD         nginx.conf /root/
